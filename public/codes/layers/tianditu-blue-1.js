@@ -1,7 +1,9 @@
 import * as Map3d from "map3d";
 
-const tdtUrl = "http://10.223.178.107/api/t-gis/tdtd/";
+const viewer = new Map3d.Viewer("map");
 
+const token = "8c451574e69800c7fee48a6d4ecfbdb7";
+const tdtUrl = "http://10.223.178.107/api/t-gis/tdtd/";
 const subdomains = ['0', '1', '2', '3', '4', '5', '6', '7'];
 
 // 底图

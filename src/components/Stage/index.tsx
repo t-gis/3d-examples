@@ -12,7 +12,7 @@ const Sandcastle: ForwardRefRenderFunction<SandcastleHandle, SandcastleProps> = 
     const writeIframe = (code: string, options?: any) => {
         if (iframeRef.current) {
             const iframeDoc = iframeRef.current.contentDocument;
-            const hasSM = options.sm ?? false;
+            const hasSM = options?.sm ?? false;
             iframeDoc?.open();
             iframeDoc?.write(`
                 <head>
@@ -26,6 +26,8 @@ const Sandcastle: ForwardRefRenderFunction<SandcastleHandle, SandcastleProps> = 
                     <script src="./Cesium/Cesium.js"></script>
 
                     <script src="./map3d.iife.js"></script>
+                    <script src="./turf.min.js"></script>
+                    <script src="./xt3d.js"></script>
                     <style>
                         *, html, body {
                             padding: 0;

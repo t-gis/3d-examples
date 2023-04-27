@@ -85,6 +85,72 @@ const Home = memo(() => {
                         { title: "线", url: "./codes/vector/entity-polyline.js", image: "vector/entity-polyline.jpg" },
                         { title: "线", url: "./codes/vector/entity-polygon.js", image: "vector/entity-polygon.jpg" },
                         { title: "混合矢量", url: "./codes/vector/entity-mixin.js", image: "vector/entity-mixin.jpg" },
+                        { title: "迁徙线", url: "./codes/vector/polyline-migrate.js", image: "vector/polyline-migrate.gif" },
+                        { title: "动态线", url: "./codes/vector/polyline-dynamic.js", image: "vector/polyline-dynamic.gif" },
+                        { title: "精灵线", url: "./codes/vector/polyline-sprite.js", image: "vector/polyline-sprite.gif" },
+                        { title: "飞线", url: "./codes/vector/polyline-flying.js", image: "vector/polyline-flying.gif" },
+                    ]
+                }
+            ]
+        },
+        {
+            id: 6,
+            title: "圆形对象",
+            icon: "icon-circle1",
+            children: [
+                {
+                    title: "基础对象",
+                    list: [
+                        { title: "雷达扫描", url: "./codes/circle/radarscan.js", image: "circle/radarscan.gif" },
+                        { title: "扩散圆", url: "./codes/circle/diff-circle.js", image: "circle/diff-circle.gif" },
+                        { title: "波纹圆", url: "./codes/circle/wave-circle.js", image: "circle/wave-circle.gif" },
+                        { title: "六边形扩散", url: "./codes/circle/diff-hexagon.js", image: "circle/diff-hexagon.gif" },
+                        { title: "扇型扫描", url: "./codes/circle/scane-circle.js", image: "circle/scane-circle.gif" },
+
+                    ]
+                }
+            ]
+        },
+        {
+            id: 7,
+            title: "墙体对象",
+            icon: "icon-brick_wall",
+            children: [
+                {
+                    title: "基础对象",
+                    list: [
+                        { title: "普通动态", url: "./codes/wall/dynamic-wall.js", image: "wall/dynamic-wall.gif" },
+                        { title: "高级动态", url: "./codes/wall/flow-wall.js", image: "wall/flow-wall.gif" },
+                        { title: "锯齿围栏", url: "./codes/wall/sawtooth-wall.js", image: "wall/sawtooth-wall.gif" }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 8,
+            title: "球体对象",
+            icon: "icon--guoji",
+            children: [
+                {
+                    title: "基础对象",
+                    list: [
+                        { title: "电弧穹顶", url: "./codes/ellipsoid/electric.js", image: "ellipsoid/electric.gif" },
+                        { title: "球体材质", url: "./codes/ellipsoid/material.js", image: "ellipsoid/material.gif" },
+                    ]
+                }
+            ]
+        },
+        {
+            id: 9,
+            title: "高阶组件",
+            icon: "icon-yunyingguanli",
+            children: [
+                {
+                    title: "基础对象",
+                    list: [
+                        { title: "扫描线", url: "./codes/hoc/scanline.js", image: "hoc/scanline.gif" },
+                        { title: "光锥柱体", url: "./codes/hoc/cone-glow.js", image: "hoc/cone-glow.gif" },
+                        { title: "发光柱体", url: "./codes/hoc/cylinder-glow.js", image: "hoc/cylinder-glow.gif" },
                     ]
                 }
             ]
