@@ -1,11 +1,14 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { Box, ContentBox } from "./index.sty";
 import Sidebar from "@/components/Sidebar";
 import Content from "@/components/Content";
 import { generatePath } from "react-router-dom";
 import Header from "@/components/Header";
+import stores, { TYPE_EXAMPLE_LIST } from '@/stores';
 
 export type SidebarDataEntity = {
+    id?: number,
+    pid?: number
     title: string,
     url: string,
     image: string,
@@ -24,9 +27,11 @@ export type SidebarEntity = {
     children?: SidebarChildEntity[]
 }
 
+const apiDataId = 99
+
 const Home = memo(() => {
 
-    const [data] = useState<SidebarEntity[]>([
+    const [data, setData] = useState<SidebarEntity[]>([
         {
             id: 1,
             title: "快速开始",
@@ -197,12 +202,12 @@ const Home = memo(() => {
     ])
     // const navigate = useNavigate();
 
-    const handleChartClick = useCallback(({ url, title, query }: SidebarDataEntity) => {
+    const handleChartClick = useCallback(({ id, pid, url, title, query }: SidebarDataEntity) => {
         let queryStr = new URLSearchParams(query ?? {}).toString();
         if (queryStr) {
             queryStr = "&" + queryStr;
         }
-        const appendUrl = `${generatePath(`#/editor?r=${url}${queryStr}`)}`;
+        const appendUrl = pid === apiDataId ? `#/editor?id=${id}` : generatePath(`#/editor?r=${url}${queryStr}`);
         const w = window.open(appendUrl, title);
         if (w) {
             w.onload = function () {
@@ -211,6 +216,37 @@ const Home = memo(() => {
         }
 
     }, [data])
+
+
+    useEffect(() => {
+        stores.on(TYPE_EXAMPLE_LIST, (content: any[]) => {
+            if (!content || !content.length) return;
+            const group: SidebarEntity = {
+                id: apiDataId,
+                title: '开发示例',
+                icon: 'icon-code',
+                children: []
+            };
+            const token = localStorage.getItem('t-gis-token')
+            content.forEach((x: any) => {
+                if (!x.category) return
+                const child = group.children!.find(z => z.title === x.category);
+                const item: SidebarDataEntity = {
+                    id: x.id,
+                    title: x.name,
+                    url: x.content,
+                    image: `/api/upload/download?id=${x.imageId}&token=Bearer ${token}`, 
+                    pid: apiDataId
+                }
+                if (!child) {
+                    group.children!.push({ title: x.category, list: [item] });
+                } else {
+                    child.list!.push(item);
+                }
+            });
+            setData(d => [...d.filter(x => x.id !== apiDataId), group]);
+        });
+    }, []);
 
     return (
         <Box>

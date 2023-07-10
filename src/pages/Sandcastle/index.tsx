@@ -5,6 +5,7 @@ import "allotment/dist/style.css";
 
 import Source from '@/components/Source';
 import Stage from '@/components/Stage';
+import stores, { TYPE_EXAMPLE_LIST } from '@/stores';
 
 const Sandcastle = memo(() => {
 
@@ -18,8 +19,17 @@ const Sandcastle = memo(() => {
     const sourceRef = useRef<SourceHandle>(null);
 
     const getCode = useCallback(() => {
+        const id = searchParams.get('id')
+        const sm = searchParams.get('sm');
+        if (id != null) {
+            return new Promise<{ code: string, options: any }>(resolve => {
+                stores.on(TYPE_EXAMPLE_LIST, (content: any[]) => {
+                    const one = content.find(x => x.id === id)
+                    resolve({ code: one ? one.content : '', options: { sm } })
+                })
+            })
+        }
         const url = searchParams.get("r");
-        const sm = searchParams.get("sm");
         return new Promise<{ code: string, options?: any }>((resolve, reject) => {
             if (url) {
                 fetch(url)
