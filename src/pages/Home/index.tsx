@@ -60,8 +60,8 @@ const Home = memo(() => {
                         { title: "ArcGis白色底图", url: "./codes/layers/arcgis-warm.js", image: "layers/arcgis-warm.jpg" },
                         { title: "天地图蓝色底图", url: "./codes/layers/tianditu-blue.js", image: "layers/tianditu-blue.jpg" },
                         { title: "天地图白色底图", url: "./codes/layers/tianditu-warm.js", image: "layers/tianditu-warm.jpg" },
-                        { title: "超图白色底图(深圳)", url: "./codes/layers/supermap-warm.js", image: "layers/supermap-warm.jpg" },
-                        { title: "超图蓝色底图(深圳)", url: "./codes/layers/supermap-blue.js", image: "layers/supermap-blue.jpg" },
+                        // { title: "超图白色底图(深圳)", url: "./codes/layers/supermap-warm.js", image: "layers/supermap-warm.jpg" },
+                        // { title: "超图蓝色底图(深圳)", url: "./codes/layers/supermap-blue.js", image: "layers/supermap-blue.jpg" },
                     ]
                 },
                 {
@@ -88,7 +88,7 @@ const Home = memo(() => {
                         { title: "图片", url: "./codes/vector/entity-billboard.js", image: "vector/entity-billboard.jpg" },
                         { title: "点", url: "./codes/vector/entity-point.js", image: "vector/entity-point.jpg" },
                         { title: "线", url: "./codes/vector/entity-polyline.js", image: "vector/entity-polyline.jpg" },
-                        { title: "线", url: "./codes/vector/entity-polygon.js", image: "vector/entity-polygon.jpg" },
+                        { title: "面", url: "./codes/vector/entity-polygon.js", image: "vector/entity-polygon.jpg" },
                         { title: "混合矢量", url: "./codes/vector/entity-mixin.js", image: "vector/entity-mixin.jpg" },
                         { title: "迁徙线", url: "./codes/vector/polyline-migrate.js", image: "vector/polyline-migrate.gif" },
                         { title: "动态线", url: "./codes/vector/polyline-dynamic.js", image: "vector/polyline-dynamic.gif" },
