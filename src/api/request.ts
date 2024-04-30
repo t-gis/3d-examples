@@ -42,7 +42,20 @@ const tgisAxios = {
     return new Promise((resolve, reject) => {
       const headers = config && config.headers ? config.headers : {}
       const defaultHeaders = getDefaultHeaders()
-      fetch(url, { method: 'GET', headers: { ...defaultHeaders, ...headers } }).then(res => res.json()).then(resolve).catch(reject)
+      // fetch(url, { method: 'GET', headers: { ...defaultHeaders, ...headers } }).then(res => res.json()).then(resolve).catch(reject)
+
+      fetch(url, { method: 'GET', headers: { ...defaultHeaders, ...headers } })
+        .then(res => {
+          if (res.status === 401 || res.status === 500) {
+            // 如果返回 401，执行页面跳转到登录页
+            // window.location.href = 'http://10.223.178.107/#/login';
+            window.location.href = import.meta.env.VITE_TGIS_loginUrl;
+          } else {
+            return res.json();
+          }
+        })
+        .then(resolve)
+        .catch(reject);
     })
   },
   post: <T = any, D = any>(url: string, data?: D, config?: { headers: RequestInit['headers'] }): Promise<RequestResponse<T>> => {
@@ -53,7 +66,19 @@ const tgisAxios = {
       if (data) {
         init.body = stringifyParam(data)
       }
-      fetch(url, init).then(res => res.json()).then(resolve).catch(reject)
+      // fetch(url, init).then(res => res.json()).then(resolve).catch(reject)
+      fetch(url, init)
+        .then(res => {
+          if (res.status === 401 || res.status === 500) {
+            // 如果返回 401，执行页面跳转到登录页
+            // window.location.href = 'http://10.223.178.107/#/login';
+            window.location.href = import.meta.env.VITE_TGIS_loginUrl;
+          } else {
+            return res.json();
+          }
+        })
+        .then(resolve)
+        .catch(reject);
     })
   },
 }
